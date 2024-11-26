@@ -87,7 +87,7 @@ function NewsBlog(props) {
                 // temp.splice(0, 1, 'Today News') //0인덱스부터 1개 삭제, 뒤에 추가
                 setNews(temp);
             }}>제목 변경</button>
-            {flag == true ? <Modal /> : null}
+            {flag == true ? <Modal news={news} setNews={setNews} bgColor={'lightgreen'}/> : null}
 
         </div>
     )
