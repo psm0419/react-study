@@ -2,20 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './FoodMarket.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import banner_bg from './banner_bg.jpg';
 import foodsData from '../data/foodsData.js';
 import { useState } from 'react';
-import FoodCard from './FoodCard.js';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import Home from './pages/Home.js';
 
 
 function FoodMarket() {
 
     let [foods, setFoods] = useState(foodsData);
-
+    let navigate = useNavigate(); //경로 조작 함수
 
     return (
         <div>
@@ -23,9 +19,9 @@ function FoodMarket() {
                 <Container>
                     <Navbar.Brand href="#home">Market</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">FoodDetail</Nav.Link>
-                        <Nav.Link href="#pricing">Info</Nav.Link>
+                        <Nav.Link > <Link to="/">Home</Link> </Nav.Link>
+                        <Nav.Link onClick={()=>{navigate("/detail")}}>FoodDetail</Nav.Link>
+                        <Nav.Link onClick={()=>{navigate("/info")}}>Info</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
@@ -42,18 +38,14 @@ function FoodMarket() {
             package.json
             "homepage" : "/newurlpath" 홈페이지 경로
             */}
-            <div className='main-bg' style={{ backgroundImage: 'url(' + banner_bg + ')' }}></div>
-            <Container>
-                <Row>                    
-                        {
-                            foods.map((food, index) => { //foods는 배열전체  food는 객체(foods[0] 이런식으로 인덱스 하나만 저장)
-                                return (
-                                    <Col md={4} sm={4}><FoodCard index={index} food={food} foods={foods}/></Col>
-                                )
-                            })
-                        }                    
-                </Row>
-            </Container>
+            
+
+            <Routes>
+                <Route path='/' element={<Home foods={foods}/>}></Route>            
+                <Route path='/detail' element={<h1>detail page</h1>}></Route>
+                <Route path='/info' element={<h1>info page</h1>}></Route>                
+            </Routes>
+
             {/* <Container>
                 <Row>
                     <Col md={4} sm={4}><Card style={{ width: '18rem' }}>
