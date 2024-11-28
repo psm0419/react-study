@@ -9,6 +9,7 @@ import ColorBox from "./ColorBox";
 //         <div className="box-blue"></div>,
 //         <div className="box-green"></div>,
 //         <div className="box-black"></div>]);
+        
 
 //     return (
 //         <div >
@@ -65,6 +66,7 @@ import ColorBox from "./ColorBox";
 function Practice002() {
 
     let [box, setBox] = useState(['red','blue','green','black']);
+    
 
     return (
         <div >
@@ -109,8 +111,8 @@ function Practice002() {
             </div>
 
             { //box에 들어있는 배열 밸류에 하나씩 넣음
-                box.map((value)=>{
-                    return <ColorBox bgColor = {value}/>
+                box.map((value, index)=>{
+                    return <ColorBox index={index} box={box} setBox={setBox}  bgColor = {value}/>
                 })
             }
         </div>
