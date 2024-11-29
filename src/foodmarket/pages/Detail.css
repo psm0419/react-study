@@ -1,0 +1,22 @@
+.price-red {
+    color: red;
+}
+
+.price-blue {
+    color: blue;
+}
+
+.text-strong {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.start {
+    opacity: 0;
+    transition-property: all;
+    transition-duration: 1s;
+}
+/* opacity 투명도 0이면 안보임 */
+.end {
+    opacity: 1;
+}

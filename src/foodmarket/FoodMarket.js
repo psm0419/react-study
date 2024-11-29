@@ -6,6 +6,7 @@ import foodsData from '../data/foodsData.js';
 import { useState } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Home from './pages/Home.js';
+import Detail from './pages/Detail.js';
 
 
 function FoodMarket() {
@@ -17,7 +18,7 @@ function FoodMarket() {
         <div>
             <Navbar bg="light" data-bs-theme="light">
                 <Container>
-                    <Navbar.Brand href="#home">Market</Navbar.Brand>
+                    <Navbar.Brand href="/">Market</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link > <Link to="/">Home</Link> </Nav.Link>
                         <Nav.Link onClick={()=>{navigate("/detail")}}>FoodDetail</Nav.Link>
@@ -42,8 +43,9 @@ function FoodMarket() {
 
             <Routes>
                 <Route path='/' element={<Home foods={foods}/>}></Route>            
-                <Route path='/detail' element={<h1>detail page</h1>}></Route>
-                <Route path='/info' element={<h1>info page</h1>}></Route>                
+                <Route path='/info' element={<h1>info page</h1>}></Route>              
+                <Route path='/detail/:id' element={<Detail foods={foods}/>}></Route>
+                <Route path='*' element={<div>찾을 수 없습니다. 주소확인</div>}></Route>
             </Routes>
 
             {/* <Container>
