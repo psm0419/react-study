@@ -11,6 +11,7 @@ import NewsBlog from './newsblog/NewsBlog';
 import Quiz003 from './practice/Quiz003';
 import Practice002 from './practice/practice002';
 import FoodMarket from './foodmarket/FoodMarket';
+import AppRS from './react_spring/AppRS';
 
 
 
@@ -26,7 +27,8 @@ function App() {
   // return <NewsBlog/>;
   // return <Quiz003/>;
   // return <Practice002/>;
-  return <FoodMarket/>;
+  // return <FoodMarket/>;
+  return <AppRS/>;
   
 }
 
