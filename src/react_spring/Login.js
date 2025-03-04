@@ -1,12 +1,48 @@
 import { useState } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { saveUserName, clearUserName, saveUserInfo, setWeatherInfo } from "./store/store";
 
 function Login() {
+    // redux store에 있는 slice에 값 변경 등의 action 함수를 호출하려면 
+    // dispatch에 감싸서 요청
+    let dispatch = useDispatch();
+
+    //redux에 저장된 상태값 접근(사용)
+    let reduxState = useSelector((state) => { return state })
+    console.log(reduxState);
+    console.log(reduxState.user);
+    console.log(reduxState.weather);
+    let user = useSelector((state) => { return state.user })
+    let weather = useSelector((state) => { return state.weather })
+    console.log(user);
+    console.log(weather);
+
     let [id, setId] = useState('');
     let [pw, setPw] = useState('');
 
     return (
         <div>
+            <button onClick={() => {
+                dispatch(saveUserName('abc'));
+                console.log(user);
+            }}>saveUserName</button>
+
+            <button onClick={() => {
+                dispatch(clearUserName());
+                console.log(user);
+            }}>clearUserName</button>
+
+            <button onClick={() => {
+                dispatch(saveUserInfo({ id: 'abc', name: 'Bob' }));
+                console.log(user);
+            }}>saveUserInfo</button>
+
+            <button onClick={() => {
+                dispatch(setWeatherInfo({ weather: 'rainy', temperature: '5', humdt: '80' }));
+                console.log(weather);
+            }}>setWeatherInfo</button>
+
             <h1>React Spring Login</h1>
 
             id: <input type="text" onChange={(e) => {
@@ -88,9 +124,9 @@ function Login() {
                         param1: "abc"
                     },
                     {
-                        headers : {
-                            "Content-Type":"application/json",
-                            "Authorization":"Bearer " + localStorage.getItem("accessToken")
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + localStorage.getItem("accessToken")
                         }
                     }
                 )

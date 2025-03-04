@@ -101,4 +101,6 @@ function AppRS() {
 
 }
 // npm install axios 설치
+// npm install react-redux
+// npm install @reduxjs/toolkit
 export default AppRS;
